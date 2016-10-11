@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>First Form</title>
+</head>
+
+<body>
+	<pre>
+	get:数据量小，安全性不高，默认方式
+	post：量大安全性相对高
+	action:请求的服务器路径
+	id:编号js使用
+	name：后端区分唯一性，只要提交数据后台，必须有name
+	</pre>
+<form method="post" action="http://localhost:8800/log">
+	username:<input type="text" name="uname" id="name" />
+	passw:<input type="password" name="pwd" id="password"/>
+	兴趣: <input type="checkbox" name="fav" value="0" />
+		  <input type="checkbox" name="fav" value="0" />篮球
+		  <input type="checkbox" name="fav" value="0" />乒乓球
+		  <input type="submit" name="Submit" value="上交给国家"/>
+</body>
+   
+</html> 
