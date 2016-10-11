@@ -1,0 +1,10 @@
+package com.knightsight.percolation;
+
+public class WeightedQuickUnionUF {
+	private int []id;
+	private int []sz;
+	public WeightedQuickUnionUF(int n){
+		
+		for(int i=)
+	}
+}

@@ -1,88 +1,84 @@
 package com.knightsight.percolation;
+
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+
 public class Percolation{
-	private int []id;
 	private boolean []stat;
-	private int n;
+    private WeightedQuickUnionUF grid;
+    private WeightedQuickUnionUF gridWith0;
+    private int n;
 	public Percolation(int n){
+		this.n=n;
 		if(n<=0)
 			throw new IllegalArgumentException("Argument Illegal");
-		this.n=n;
-		id=new int[n*n+1];
 		stat=new boolean[n*n+1];
-		for(int i=1;i<=n*n;i++){
-			id[i]=i;
-		}
+		for(int i=1;i<=n*n;i++)
+			stat[i]=false;
+		grid=new WeightedQuickUnionUF(n*n+2);
+		gridWith0=new WeightedQuickUnionUF(n*n+1);
 	}
 	
-	private boolean isValidate(int i){
-		if(i<=0||i>n){
-			throw new IndexOutOfBoundsException("row index i out of bounds");
-		}
-		return true;
+	private boolean isBottom(int i,int j){
+		return xyTo1d(i, j)<=n*n&&xyTo1d(i, j)>n*(n-1);
+	}
+	
+	private boolean isTop(int i,int j){
+		return xyTo1d(i, j)<=n;
 	}
 	
 	private int xyTo1d(int i,int j){
+		if(i<=0||i>n){
+			throw new IndexOutOfBoundsException("row index i out of bounds");
+		}
+		if(j<=0||j>n){
+			throw new IndexOutOfBoundsException("row index j out of bounds");
+		}
 		return (i-1)*n+j;
 	}
 	
-	private int root(int i){
-		while(id[i]!=i){
-			id[i]=id[id[i]];
-			i=id[i];
-		}
-		return i;
-	}
-	
-	private void union(int p,int q){
-		int rootp=root(p);
-		int rootq=root(q);
-		if(rootp<rootq){
-			id[rootq]=rootp;
-		}else{
-			id[rootp]=rootq;
-		}
-	}
-	
+
 	public void open(int i, int j) {
 		int index=xyTo1d(i, j);
-		if(isValidate(i)&&isValidate(j)){
-			stat[index]=true;
-			try{
-			if(stat[index+1]&&j!=n)union(index,index+1);
-			if(stat[index-1]&&j!=1)union(index,index-1);
-			if(stat[index-n]&&i!=1)union(index,index-n);
-			if(stat[index+n]&&i!=n)union(index,index+n);
-			}catch(ArrayIndexOutOfBoundsException e){
-				System.out.println("the point is at border");
-			}
-			 
+		stat[index]=true;
+		if(j!=1&&isOpen(i,j-1)){
+			grid.union(xyTo1d(i, j), xyTo1d(i, j-1));
+			gridWith0.union(xyTo1d(i, j), xyTo1d(i, j-1));
+		}
+		if(j!=n&&isOpen(i,j+1)){
+			grid.union(xyTo1d(i, j), xyTo1d(i, j+1));
+			gridWith0.union(xyTo1d(i, j), xyTo1d(i, j+1));
+		}
+		if(i!=1&&isOpen(i-1,j)){
+			grid.union(xyTo1d(i, j), xyTo1d(i-1, j));
+			gridWith0.union(xyTo1d(i, j), xyTo1d(i-1, j));
+		}
+		if(i!=n&&isOpen(i+1,j)){
+			grid.union(xyTo1d(i, j), xyTo1d(i+1, j));
+			gridWith0.union(xyTo1d(i, j), xyTo1d(i+1, j));
+		}
+		if(isBottom(i, j))
+			grid.union(xyTo1d(i, j), n*n+1);
+		if(isTop(i, j)){
+			grid.union(xyTo1d(i, j), 0);
+			gridWith0.union(xyTo1d(i, j), 0);
 		}
 	}
 
 	public boolean isOpen(int i, int j) {
-		if(isValidate(i)&&isValidate(j)){
-			return stat[xyTo1d(i, j)];// TODO Auto-generated method stub
-		}
-		return false;
-
+		int index=xyTo1d(i, j);
+		return stat[index];
 	}
 
 	public boolean isFull(int i, int j) {
-		if(isValidate(i)&&isValidate(j)){
-			if(root(xyTo1d(i, j))<=n&&stat[xyTo1d(i, j)]==true)
+		int index=xyTo1d(i, j);
+		if(grid.connected(index, 0)&&gridWith0.connected(index, 0)){
 				return true;
-			else
-				return false;  //is site (row i, column j) full?	
 		}
 		return false;
 	}
 
 	public boolean percolates() {
-		for(int i=1;i<=n;i++){
-			if(isFull(n, i))
-				return true;
-		}
-		return false; // TODO Auto-generated method 
+		return grid.connected(0, n*n+1);
 	}
 	
 	public static void main(String[] args) {
@@ -91,8 +87,6 @@ public class Percolation{
 		p.open(2, 2);
 		p.open(2, 3);
 		p.open(3, 3);
-		System.out.println(p.isFull(1, 1));
-		
+		System.out.println(p.isFull(1, 1));	
 	}
-	
 }
