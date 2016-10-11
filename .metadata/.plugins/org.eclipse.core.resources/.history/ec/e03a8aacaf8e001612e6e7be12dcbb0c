@@ -1,0 +1,5 @@
+package com.knightsight.percolation;
+
+public class PercolationStats {
+
+}
