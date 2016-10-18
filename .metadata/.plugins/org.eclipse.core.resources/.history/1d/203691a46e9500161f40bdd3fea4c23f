@@ -1,0 +1,39 @@
+package com.knightsight.deque;
+
+import java.util.Iterator;
+
+public class RandomizedQueue<Item> implements Iterable<Item> {
+	private Item []q;
+	private int size;
+	public RandomizedQueue<Item>() {
+		q=(Item[])new Object[0];
+		size=0;
+	}
+	
+	public boolean isEmpty(){
+		if(q.length==0)
+			return true;
+		return false;
+	}
+	
+	@Override
+	public Iterator<Item> iterator() {
+		// TODO Auto-generated method stub
+		return new Iterator<Item>(){
+			
+			@Override
+			public boolean hasNext() {
+				// TODO Auto-generated method stub
+				return false;
+			}
+
+			@Override
+			public Item next() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
+		};
+	}
+	
+}
