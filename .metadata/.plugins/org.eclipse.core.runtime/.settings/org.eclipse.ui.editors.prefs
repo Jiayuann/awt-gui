@@ -1,2 +1,8 @@
 eclipse.preferences.version=1
+isWarningGoToNextNavigationTarget=false
 overviewRuler_migration=migrated_3.1
+spellingIndication=false
+warningIndication=false
+warningIndicationInOverviewRuler=false
+warningIndicationInVerticalRuler=false
+warningTextStyle=IBEAM

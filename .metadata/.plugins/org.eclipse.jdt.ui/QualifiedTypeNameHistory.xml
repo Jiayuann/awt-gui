@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.knight.plane.PlaneGameFrame"/>
-<fullyQualifiedTypeName name="java.awt.event.KeyAdapter"/>
-<fullyQualifiedTypeName name="java.awt.RenderingHints.Key"/>
-<fullyQualifiedTypeName name="java.awt.event.KeyEvent"/>
-<fullyQualifiedTypeName name="java.awt.Color"/>
-<fullyQualifiedTypeName name="com.knight.util.Constant"/>
-<fullyQualifiedTypeName name="java.awt.Font"/>
-<fullyQualifiedTypeName name="java.sql.Date"/>
-<fullyQualifiedTypeName name="java.awt.Image"/>
 <fullyQualifiedTypeName name="java.awt.Graphics"/>
 <fullyQualifiedTypeName name="com.knight.util.GameUtil"/>
 <fullyQualifiedTypeName name="com.knight.plane.Explode"/>
@@ -30,9 +21,7 @@
 <fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="java.io.FilenameFilter"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
@@ -56,8 +45,19 @@
 <fullyQualifiedTypeName name="com.knightsight.percolation.WeightedQuickUnionUF"/>
 <fullyQualifiedTypeName name="edu.princeton.cs.algs4.WeightedQuickUnionUF"/>
 <fullyQualifiedTypeName name="com.knightsight.percolation.Percolation"/>
-<fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdRandom"/>
 <fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdStats"/>
 <fullyQualifiedTypeName name="com.knightsight.percolation.PercolationStats"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdRandom"/>
+<fullyQualifiedTypeName name="java.util.NoSuchElementException"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="com.knightsight.deque.RandomizedQueue"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdIn"/>
+<fullyQualifiedTypeName name="java.util.Collections"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.knightsight.pattern.LineSegment"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.In"/>
 <fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdDraw"/>
+<fullyQualifiedTypeName name="edu.princeton.cs.algs4.StdOut"/>
+<fullyQualifiedTypeName name="com.knightsight.pattern.FastCollinearPoints"/>
 </qualifiedTypeNameHistroy>

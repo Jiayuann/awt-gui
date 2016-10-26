@@ -1,0 +1,35 @@
+package com.knightsight.pattern;
+import java.util.ArrayList;
+import java.util.Arrays;
+public class FastCollinearPoints {
+		ArrayList<LineSegment> list=new ArrayList<LineSegment>();
+	   public FastCollinearPoints(Point[] points){
+		  checkPoint(points);
+		  for(int i=0;i<points.length-3;i++){
+			   Arrays.sort(points,points[i].slopeOrder());
+			  for(int j=i+1;i<points.length-2;j++)
+				  if(points[i].slopeTo(points[j])==points[i].slopeTo(points[j+1])&&
+				  points[i].slopeTo(points[j])==points[i].slopeTo(points[j+2]))
+					  list.add(new LineSegment(points[i], points[j+2]));
+		  }
+		   // finds all line segments containing 4 or more points
+	   }
+	   public int numberOfSegments(){
+		   return list.size();
+		   // the number of line segments
+	   }
+	   public LineSegment[] segments(){
+		  return list.toArray(new LineSegment[list.size()]);
+		   // the line segments
+	   }
+	   public void checkPoint(Point[] points){
+		   for(int i=0;i<points.length;i++){
+			   if(points[i]==null)
+				   throw new NullPointerException();
+			   for(int j=i+1;j<points.length;j++){
+				   if(points[i].compareTo(points[j])==0)
+					   throw new IllegalArgumentException("Contains Duplicate");
+			   }
+		   }
+	   }
+}
